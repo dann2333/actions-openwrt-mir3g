@@ -11,16 +11,18 @@
 # fw876/helloworld
 sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
-# Add a feed source
-echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
-echo 'src-git lienol https://github.com/Lienol/openwrt-package' >>feeds.conf.default
-rm -rf feeds/lienol/lienol/ipt2socks
-rm -rf feeds/lienol/lienol/shadowsocksr-libev
-rm -rf feeds/lienol/lienol/pdnsd-alt
-rm -rf feeds/lienol/package/verysync
-rm -rf feeds/lienol/lienol/luci-app-verysync
-#echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
-#echo 'src-git small https://github.com/kenzok8/small' >>feeds.conf.default
+
+#Openclash
+echo 'src-git Openclash https://github.com/vernesong/OpenClash' >>feeds.conf.default
+ 
+#Passwall
+echo 'src-git PassWall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
+ 
+#HelloWorld
+echo 'src-git HelloWorld https://github.com/fw876/helloworld' >>feeds.conf.default
 
 # Lienol/openwrt-package
 #sed -i '$a src-git lienol https://github.com/Lancenas/lienol-openwrt-package.git' feeds.conf.default
+
+echo 'src-git freifunk https://github.com/freifunk/openwrt-packages.git' >>feeds.conf.default
+echo 'src-git kenzo https://github.com/kenzok8/openwrt-packages' >>feeds.conf.default
