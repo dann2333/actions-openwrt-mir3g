@@ -12,16 +12,16 @@ name: Build OpenWrt
 
 
 on:
-  repository_dispatch:
+  #repository_dispatch:
   workflow_dispatch:
     inputs:
       ssh:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
-  schedule:
+  #schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '0 0 * * *'
+    #- cron:  '0 0 * * *'
 
   push:
     branches: [ master ]
