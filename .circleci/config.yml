@@ -46,3 +46,10 @@ jobs:
           command: |
            [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
            
+
+workflows:
+  # Name of workflow
+  hello_and_goodbye:
+    # List of jobs that will run
+    jobs:
+      - my-job
