@@ -16,7 +16,7 @@ jobs:
       UPLOAD_WETRANSFER: false
       UPLOAD_RELEASE: true
       TZ: Asia/Shanghai
-    resource_class: 2xlarge
+    #resource_class: 2xlarge
     steps:
       - run:
           name: Prepare for checkout
