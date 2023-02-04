@@ -18,13 +18,13 @@ jobs:
       TZ: Asia/Shanghai
     resource_class: 2xlarge
     steps:
-    - run:
+      - run:
           name: Prepare for checkout
           command: |
             mkdir github
       - checkout:
           path: github/
-    - run: 
+      - run: 
           command: |
            sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
            sudo -E apt-get -qq update
@@ -35,13 +35,13 @@ jobs:
            sudo mkdir -p /workdir
            sudo chown $USER:$GROUPS /workdir
           name: Initialization environment
-     - run:
+      - run:
           name: Clone source code
           command: |
            df -hT $PWD
            git clone $REPO_URL -b $REPO_BRANCH openwrt
            ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-     - run:
+      - run:
           name: 
           command: |
            [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
