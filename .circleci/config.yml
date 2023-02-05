@@ -44,11 +44,14 @@ jobs:
            cp github/diy-part1.sh openwrt/diy-part1.sh
            cp github/diy-part2.sh openwrt/diy-part2.sh
            cd openwrt
-           ls
+           ls -a
       - run:
-          name: 
+          name: Prepare for making
           command: |
-           [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+           cd openwrt
+           ls -a
+           bash diy-part1.sh
+           bash diy-part2.sh
            
 
 workflows:
