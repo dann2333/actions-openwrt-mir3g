@@ -51,17 +51,17 @@ jobs:
            cd openwrt
            bash diy-part1.sh
            bash diy-part2.sh
-           ./scripts/feeds update -a
-           ./scripts/feeds install -a
+           #./scripts/feeds update -a
+           #./scripts/feeds install -a
 
             
       - store_artifacts:
-          path: openwrt/.config
+          path: openwrt/
            
 
 workflows:
   # Name of workflow
-  hello_and_goodbye:
+  make:
     # List of jobs that will run
     jobs:
       - my-job
