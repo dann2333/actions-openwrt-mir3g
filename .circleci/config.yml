@@ -38,7 +38,7 @@ jobs:
           name: Clone source code
           command: |
            df -hT $PWD
-           3pwd
+           #pwd
            git clone $REPO_URL -b $REPO_BRANCH openwrt
            rm -f openwrt/.config
            cp github/.config openwrt/.config
