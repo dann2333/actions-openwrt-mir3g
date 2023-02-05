@@ -49,9 +49,19 @@ jobs:
           name: Prepare for making
           command: |
            cd openwrt
-           ls -a
            bash diy-part1.sh
            bash diy-part2.sh
+           ./scripts/feeds update -a
+           ./scripts/feeds install -a
+#        - run:
+#            name: make
+#            command: |
+#             make defconfig
+#             make download -j8
+#             make V=s -j$(nproc)
+            
+       - store_artifacts:
+          path: openwrt/.config
            
 
 workflows:
