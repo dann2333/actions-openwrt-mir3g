@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   my-job:
     machine:
-      image: ubuntu-2204:current
+      image: ubuntu-2004:current
     environment:
       REPO_URL: https://github.com/coolsnowwolf/lede
       REPO_BRANCH: master
