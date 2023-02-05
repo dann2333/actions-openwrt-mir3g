@@ -46,6 +46,10 @@ jobs:
            cp github/diy-part2.sh openwrt/diy-part2.sh
            cd openwrt
            ls -a
+           
+      - store_artifacts:
+          path: openwrt/.config
+          
       - run:
           name: Prepare for making
           command: |
