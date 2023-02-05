@@ -53,12 +53,12 @@ jobs:
            bash diy-part2.sh
            ./scripts/feeds update -a
            ./scripts/feeds install -a
-#        - run:
-#            name: make
-#            command: |
-#             make defconfig
-#             make download -j8
-#             make V=s -j$(nproc)
+       - run:
+           name: make
+           command: |
+            make defconfig
+            #make download -j8
+            #make V=s -j$(nproc)
             
        - store_artifacts:
           path: openwrt/.config
