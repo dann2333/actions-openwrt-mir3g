@@ -55,7 +55,7 @@ jobs:
            ./scripts/feeds install -a
 
             
-       - store_artifacts:
+      - store_artifacts:
           path: openwrt/.config
            
 
