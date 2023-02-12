@@ -40,7 +40,8 @@ jobs:
            df -hT $PWD
            #pwd
            git clone $REPO_URL -b $REPO_BRANCH openwrt
-           rm -f openwrt/.config
+           #rm -f openwrt/.config
+           rm -rf ./tmp && rm -rf openwrt/.config
            cp github/.config openwrt/.config
            cp github/diy-part1.sh openwrt/diy-part1.sh
            cp github/diy-part2.sh openwrt/diy-part2.sh
