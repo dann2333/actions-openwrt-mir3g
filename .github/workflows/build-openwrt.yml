@@ -189,4 +189,4 @@ jobs:
     - name: Clean up
       working-directory: /workdir
       run: |
-        rm -rf /workdir
+        sudo rm -rf /workdir
