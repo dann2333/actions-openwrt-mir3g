@@ -11,7 +11,7 @@ jobs:
       DIY_P1_SH: diy-part1.sh
       DIY_P2_SH: diy-part2.sh
       TZ: Asia/Shanghai
-    resource_class: large
+    resource_class: xlarge
     steps:
       - run:
           name: Prepare for checkout
