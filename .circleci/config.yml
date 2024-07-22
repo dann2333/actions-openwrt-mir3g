@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   my-job:
     machine:
-      image: ubuntu-2004:current
+      image: ubuntu-2204:current
     environment:
       REPO_URL: https://github.com/coolsnowwolf/lede
       REPO_BRANCH: master
@@ -22,7 +22,7 @@ jobs:
       - run: 
           command: |
            sudo -E apt-get -qq update
-           sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-2004)
+           sudo -E apt-get -qq install ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libfuse-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libpython3-dev libreadline-dev libssl-dev libtool lrzsz mkisofs msmtp ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pyelftools python3-setuptools qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
            sudo -E apt-get -qq autoremove --purge
            sudo -E apt-get -qq clean
            sudo timedatectl set-timezone "$TZ"
@@ -43,19 +43,18 @@ jobs:
            cp github/diy-part1.sh openwrt/diy-part1.sh
            cp github/diy-part2.sh openwrt/diy-part2.sh
            cd openwrt
-           ls -a
            
       - store_artifacts:
           path: openwrt/.config
           
       - run:
-          name: Prepare for making
+          name: Apply custom feeds and scripts
           command: |
            cd openwrt
            bash diy-part1.sh
-           bash diy-part2.sh
            ./scripts/feeds update -a
            ./scripts/feeds install -a
+           bash diy-part2.sh
            make defconfig
       - run:
           name: make
@@ -65,7 +64,7 @@ jobs:
            make V=s -j$(nproc)
            
       - run:
-          name: ready to upload firmware
+          name: prepare to upload firmware
           command: |
            cd openwrt/bin/targets/*/*
            rm -rf packages
@@ -79,4 +78,4 @@ workflows:
   make:
     # List of jobs that will run
     jobs:
-      - my-job
+      - build-openwrt
