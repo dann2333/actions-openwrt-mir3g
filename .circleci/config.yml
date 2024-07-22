@@ -4,7 +4,7 @@ jobs:
     machine:
       image: ubuntu-2204:current
     environment:
-      REPO_URL: https://github.com/coolsnowwolf/lede
+      REPO_URL: https://github.com/dann2333/lede
       REPO_BRANCH: master
       FEEDS_CONF: feeds.conf.default
       CONFIG_FILE: .config
@@ -32,10 +32,7 @@ jobs:
       - run:
           name: Clone source code
           command: |
-           df -hT $PWD
-           #pwd
            git clone $REPO_URL -b $REPO_BRANCH openwrt
-           #rm -f openwrt/.config
            cd openwrt
            rm -rf ./tmp && rm -rf .config
            cd ..
